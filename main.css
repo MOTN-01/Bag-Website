@@ -1,0 +1,270 @@
+body{
+    margin:0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    width:100vw;
+}
+/* NAVIGATION ******************************/
+.top-bar{
+    background-color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:6rem;
+    width:100%;
+    font-size: 1.2rem;
+}
+.logo{
+    padding-left:1em;
+}
+.links{
+    display:flex;
+    justify-content:center;
+    width:70%;
+}
+a{
+    text-decoration: none;
+    color:black;
+    position:relative;
+}
+a::before {
+    content: "";
+    position: absolute;
+    display: block;
+    height: .15em;
+    width:0;
+    bottom: -.2em;
+    left: 0;
+    background-color:rgb(0, 89, 255);
+    border-radius: 10px;
+    transition: width 0.25s ease;
+}
+a:hover::before {
+    width:100%;
+}
+ul{
+    position: relative;
+}
+
+li {
+    display:inline;
+    padding:0 1rem 0 1rem;
+}
+
+.cart{
+    padding-right:1em;
+    height:3em;
+}
+.cart img{
+    height:3em;
+}
+.logo, .cart{
+    font-weight:bold;
+}
+.menu{
+    display:none;
+}
+
+
+/* PARALAX SETTINGS ****************************/
+
+.first{
+    background-image: url('Images/banner.jpg');
+}
+.paralax-background{
+background-attachment: fixed;
+background-size: cover;
+
+width:100vw;
+height:90vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+}
+.second{
+    background-image:url('Images/banner2.jpg');
+    height:30vh;
+    }
+
+
+/* HERO TEXT *******************************/
+.banner-head{
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color:white;
+}
+.banner-text{
+    font-size:1rem;
+    color:white;
+    text-align: center;
+}
+
+
+/* MORE INFO MODULE ****************************/
+.more-info-center{
+    display: flex;
+    justify-content: center;
+}
+.more-info-section{
+    height:30rem;
+    display:grid;
+    grid-template-columns: 5fr 6fr;
+    grid-column-gap: 1rem;
+    width: 70%;
+}
+.info-image-container{
+height:30rem;
+width:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+.info-image{
+height:80%;
+width:90%;
+object-fit: cover;
+}
+
+.info-info{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.info-info2{
+    text-align:right;
+}
+.info-info h1{
+    text-align: center;
+    margin:0;
+}
+
+
+/* PURCHASE CARDS ****************************/
+.purchase-cards{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    padding: 4rem 15% 10rem 15%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: #fafafa;
+}
+.card{
+    height:20rem;
+    width:15rem;
+    box-shadow: 1px 1px 1px 1px lightgray;
+    border-radius:0.4rem;
+    background-color: white;
+    margin:.5rem 1rem .5rem 1rem;
+}
+.text{
+    overflow:scroll;
+    height:85%;
+    margin-left:1rem;
+    margin-right: 1rem;
+
+}
+.purchase-cards .button-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:15%
+}
+h2{
+    text-align: center;
+    font-size: 1.2rem;
+}
+.purchase-cards .button-container button{
+    padding:.2rem 2rem .2rem 2rem;
+    background-color: white;
+    border-radius: .5rem;
+}
+
+
+/* FOOTER ******************************/
+.footer{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: .7rem;
+    height:10rem;
+    position:relative;
+}
+.footer-text{
+    position:relative;
+}
+.footer-text::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    width:0;
+    transition: width 0.25s ease;
+}
+.footer-text:hover::before {
+    width:100%;
+}
+
+
+
+/* FULL WIDTH MODULE *******************************/
+.full-width-info{
+    background-color: #fafafa;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+    height:8rem;
+    margin:.6rem 0 2rem 0;
+}
+.full-width-info button{
+    padding: 1rem 1rem 1rem 1rem;
+    border:none;
+    border-radius: 1rem;
+    color:white;
+    background-color: rgb(0, 89, 255);
+}
+/* * { border: 1px solid red !important; margin:0; padding:0;} useful for debugging */
+
+
+
+/* MOBILE RESPONSIVENESS ************************/
+@media only screen and (max-width: 850px) {
+ .more-info-section{
+    width:85%;
+}
+.links{
+    display:none;
+}
+.menu{
+    display:block;
+}
+  }
+
+  @media only screen and (max-width: 650px) {
+    .more-info-section{
+        width:70%;
+        grid-template-columns: 1fr;
+        
+    }
+
+
+    .info-image-container{
+    /* opacity:0;
+    position:absolute; */
+    display:none;
+    }
+    .info-info2{
+        text-align:left;
+    }
+    .top-bar{
+        font-size: 2.5vw;
+    }
+      }
