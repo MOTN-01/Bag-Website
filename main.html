@@ -20,19 +20,23 @@
                 <li><a href="#">Products</a></li>
             </ul>
         </div>
+
         <div class="cart">
-            <img src="../SimpleEasyPortfolio/images/cart.png">
+            <button id="cartIcon" class="cart-button">
+                Cart
+                <span class="cart-badge" id="cartCount">0</span>
+            </button>
         </div>
+
         <div class="menu">
-            <img src="Images/menu.png">
+            <img src="Images/menu.png" alt="Menu">
         </div>
     </div>
 
-    
     <div class="paralax-background first">
         <div class="banner-textbox">
-        <p class="banner-head">Sling Bags</p>
-        <p class="banner-text">A modern carry solution—compact, practical, and designed for everyday movement.</p>
+            <p class="banner-head">Sling Bags</p>
+            <p class="banner-text">A modern carry solution—compact, practical, and designed for everyday movement.</p>
         </div>
     </div>
 
@@ -44,7 +48,7 @@
     <div class="more-info-center">
         <div class="more-info-section">
             <div class="info-image-container">
-            <img class="info-image" src="Images/bag2.jpg">
+                <img class="info-image" src="Images/bag2.jpg" alt="Sling bag">
             </div>
             <div class="info-info">
                 <h1 class="tester">Initial Research</h1>
@@ -60,44 +64,153 @@
                 <p>Participants tested sling bags they already owned across common scenarios—commuting, walking in busy areas, short hikes, and errands—to assess stability, accessibility, and day-to-day comfort. Notes were collected on capacity, pocket layout, zippers, and how well each bag handled frequent use.</p>
             </div>
             <div class="info-image-container">
-                <img class="info-image" src="Images/bag1.jpg">
+                <img class="info-image" src="Images/bag1.jpg" alt="Sling bag">
             </div>
         </div>
     </div>
 
-    <div class='paralax-background second'>
-    </div>
+    <div class="paralax-background second"></div>
 
     <div class="purchase-cards">
         <div class="card">
-            <div class=text>
+            <div class="text">
                 <h2>Version 1</h2>
-                <p>Designed for light daily carry. This option prioritizes a slim profile and fast access to essentials such as a phone, wallet, keys, and small accessories. Best suited for short outings where minimal storage is preferred.This option adds dedicated compartments for improved sorting, making it a solid fit for commuting and travel. Ideal for users who want structure without moving up to a full backpack.</p>
+                <p>Designed for light daily carry. This option prioritizes a slim profile and fast access to essentials such as a phone, wallet, keys, and small accessories. Best suited for short outings where minimal storage is preferred.</p>
             </div>
             <div class="button-container"><button>View Details</button></div>
         </div>
+
         <div class="card">
-            <div class=text>
+            <div class="text">
                 <h2>Version 2</h2>
                 <p>Balanced capacity and organization. This option adds dedicated compartments for improved sorting, making it a solid fit for commuting and travel. Ideal for users who want structure without moving up to a full backpack.</p>
             </div>
             <div class="button-container"><button>View Details</button></div>
         </div>
+
         <div class="card">
-            <div class=text>
+            <div class="text">
                 <h2>Version 3</h2>
-                <p>Built for versatility and longer days. This option focuses on comfort under load and durable materials, with additional space for items like a compact water bottle, charger, or small camera. Recommended for travel days and extended time on the go.This option adds dedicated compartments for improved sorting, making it a solid fit for commuting and travel. Ideal for users who want structure without moving up to a full backpack.</p>
+                <p>Built for versatility and longer days. This option focuses on comfort under load and durable materials, with additional space for items like a compact water bottle, charger, or small camera. Recommended for travel days and extended time on the go.</p>
             </div>
             <div class="button-container"><button>View Details</button></div>
         </div>
     </div>
 
+    <div class="full-width-info products-intro">
+        <p>Featured Products</p>
+        <button id="viewCartBtn" class="view-cart-btn">
+    View Cart
+    <span class="view-cart-badge" id="viewCartCount">0</span>
+</button>
+    </div>
+
+    <div class="products-section">
+        <div class="products-grid" id="productGrid">
+
+            <div class="product-card" data-sku="SB-101" data-name="Metro Sling" data-price="39.99">
+                <div class="product-icon" data-mark="M" aria-hidden="true"><span class="mark"></span></div>
+                <div class="product-text">
+                    <h2>Metro Sling</h2>
+                    <p>Compact daily carry with quick-access pockets and a streamlined profile.</p>
+                    <p class="price">$39.99</p>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-sku="SB-102" data-name="Commuter Sling" data-price="54.99">
+                <div class="product-icon" data-mark="C" aria-hidden="true"><span class="mark"></span></div>
+                <div class="product-text">
+                    <h2>Commuter Sling</h2>
+                    <p>More organization for chargers, small notebooks, and daily essentials.</p>
+                    <p class="price">$54.99</p>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-sku="SB-103" data-name="Trail Sling" data-price="59.99">
+                <div class="product-icon" data-mark="T" aria-hidden="true"><span class="mark"></span></div>
+                <div class="product-text">
+                    <h2>Trail Sling</h2>
+                    <p>Durable materials and stable fit for walks, errands, and light outdoor use.</p>
+                    <p class="price">$59.99</p>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-sku="SB-104" data-name="Tech Sling" data-price="64.99">
+                <div class="product-icon" data-mark="X" aria-hidden="true"><span class="mark"></span></div>
+                <div class="product-text">
+                    <h2>Tech Sling</h2>
+                    <p>Structured compartments for gadgets, cables, and small accessories.</p>
+                    <p class="price">$64.99</p>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-sku="SB-105" data-name="Travel Sling" data-price="69.99">
+                <div class="product-icon" data-mark="R" aria-hidden="true"><span class="mark"></span></div>
+                <div class="product-text">
+                    <h2>Travel Sling</h2>
+                    <p>Designed for passports, tickets, and easy access while on the move.</p>
+                    <p class="price">$69.99</p>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card" data-sku="SB-106" data-name="All-Day Sling" data-price="74.99">
+                <div class="product-icon" data-mark="A" aria-hidden="true"><span class="mark"></span></div>
+                <div class="product-text">
+                    <h2>All-Day Sling</h2>
+                    <p>Extra capacity and comfort for longer days and more gear.</p>
+                    <p class="price">$74.99</p>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="cartModal" class="modal-overlay" aria-hidden="true">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Cart</h2>
+                <button id="closeCartBtn" class="modal-close">Close</button>
+            </div>
+
+            <div id="cartItems" class="cart-items">
+                <p>Your cart is empty.</p>
+            </div>
+
+            <div class="modal-footer">
+                <p><strong>Total:</strong> <span id="cartTotal">$0.00</span></p>
+                <button id="checkoutBtn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <hr>
     <div class="footer">
         <div class="animation-container">
             <p class="footer-text">© 2025 SlingBags. All rights reserved.</p>
         </div>
     </div>
 
-
+    <button id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+    Back To Top
+    </button>
+    <script src="script.js"></script>
 </body>
 </html>
