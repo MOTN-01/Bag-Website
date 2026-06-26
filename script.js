@@ -6,6 +6,8 @@
   const viewCartBtn = document.getElementById("viewCartBtn");
   const viewCartCountEl = document.getElementById("viewCartCount");
   const backToTopBtn = document.getElementById("backToTopBtn");
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileNav = document.getElementById("mobileNav");
 
   const cartModal = document.getElementById("cartModal");
   const closeCartBtn = document.getElementById("closeCartBtn");
@@ -46,15 +48,49 @@
   }
 }
 
+  const FOCUSABLE = 'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])';
+
   function openCart() {
     cartModal.style.display = "flex";
     cartModal.setAttribute("aria-hidden", "false");
     renderCart();
+    const firstFocusable = cartModal.querySelector(FOCUSABLE);
+    if (firstFocusable) firstFocusable.focus();
   }
 
   function closeCart() {
     cartModal.style.display = "none";
     cartModal.setAttribute("aria-hidden", "true");
+    cartIcon.focus();
+  }
+
+  function trapFocus(e) {
+    if (cartModal.style.display !== "flex") return;
+    const focusable = Array.from(cartModal.querySelectorAll(FOCUSABLE));
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.key === "Tab") {
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+
+  function toggleMobileNav() {
+    const isOpen = mobileNav.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    menuBtn.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+  }
+
+  function closeMobileNav() {
+    mobileNav.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.setAttribute("aria-label", "Open navigation menu");
   }
 
   function addToCart(item) {
@@ -162,6 +198,21 @@
     if (e.target === cartModal) closeCart();
   });
 
+  // Focus trap + Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      if (cartModal.style.display === "flex") closeCart();
+      if (mobileNav.classList.contains("open")) closeMobileNav();
+    }
+    trapFocus(e);
+  });
+
+  // Hamburger menu
+  menuBtn.addEventListener("click", toggleMobileNav);
+  mobileNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMobileNav);
+  });
+
   // checkout popup + reset
   checkoutBtn.addEventListener("click", () => {
     alert("Thank you for ordering! But this is not a real store...");
@@ -170,11 +221,7 @@
     closeCart();
   });
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTopBtn.classList.add("show");
-  } else {
-    backToTopBtn.classList.remove("show");
-  }
+  backToTopBtn.classList.toggle("show", window.scrollY > 300);
 });
 
 backToTopBtn.addEventListener("click", () => {
@@ -184,6 +231,7 @@ backToTopBtn.addEventListener("click", () => {
   });
 });
   // initialize
+  document.getElementById("copyrightYear").textContent = new Date().getFullYear();
   const initialCart = loadCart();
   updateBadge(initialCart);
   renderCart();
