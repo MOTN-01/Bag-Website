@@ -25,7 +25,7 @@
   const productModalMaterial = document.getElementById("productModalMaterial");
   const productModalDimensions = document.getElementById("productModalDimensions");
   const productModalCapacity = document.getElementById("productModalCapacity");
-  const productModalAddToCart = document.getElementById("productModalAddToCart");
+  const productModalBtnContainer = document.getElementById("productModalBtnContainer");
 
   function loadCart() {
     try {
@@ -39,6 +39,7 @@
   function saveCart(cart) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
     updateBadge(cart);
+    renderAllCardButtons();
   }
 
   function formatMoney(n) {
@@ -87,9 +88,7 @@
     productModalMaterial.textContent = card.dataset.material;
     productModalDimensions.textContent = card.dataset.dimensions;
     productModalCapacity.textContent = card.dataset.capacity;
-    productModalAddToCart.dataset.sku = card.dataset.sku;
-    productModalAddToCart.dataset.name = card.dataset.name;
-    productModalAddToCart.dataset.price = card.dataset.price;
+    renderModalButton(card.dataset.sku, card.dataset.name, card.dataset.price);
     productModal.style.display = "flex";
     productModal.setAttribute("aria-hidden", "false");
     const first = productModal.querySelector(FOCUSABLE);
@@ -212,22 +211,80 @@
     }, 900);
   }
 
-  // Wire product buttons
-  document.querySelectorAll(".add-to-cart").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const button = e.currentTarget;
-      const card = button.closest(".product-card");
-      if (!card) return;
+  function renderCardButton(card) {
+    const sku = card.dataset.sku;
+    const name = card.dataset.name;
+    const price = parseFloat(card.dataset.price);
+    const item = loadCart().find(function(x) { return x.sku === sku; });
+    const qty = item ? item.qty : 0;
+    const container = card.querySelector(".button-container");
+    if (!container) return;
 
-      const sku = card.getAttribute("data-sku");
-      const name = card.getAttribute("data-name");
-      const price = card.getAttribute("data-price");
+    if (qty === 0) {
+      container.innerHTML = '<button class="add-to-cart">Add to Cart</button>';
+      container.querySelector(".add-to-cart").addEventListener("click", function(e) {
+        e.stopPropagation();
+        addToCart({ sku: sku, name: name, price: price });
+      });
+    } else {
+      container.innerHTML =
+        '<div class="qty-stepper">' +
+        '<button class="qty-btn qty-minus" aria-label="Remove one">−</button>' +
+        '<span class="qty-count">' + qty + '</span>' +
+        '<button class="qty-btn qty-plus" aria-label="Add one">+</button>' +
+        '</div>';
+      container.querySelector(".qty-minus").addEventListener("click", function(e) {
+        e.stopPropagation();
+        removeOne(sku);
+      });
+      container.querySelector(".qty-plus").addEventListener("click", function(e) {
+        e.stopPropagation();
+        addToCart({ sku: sku, name: name, price: price });
+      });
+    }
+  }
 
-      addToCart({ sku, name, price: Number(price) });
-      animateAdded(button);
+  function renderModalButton(sku, name, price) {
+    if (!productModalBtnContainer) return;
+    productModalBtnContainer.dataset.sku = sku;
+    productModalBtnContainer.dataset.name = name;
+    productModalBtnContainer.dataset.price = price;
+    const item = loadCart().find(function(x) { return x.sku === sku; });
+    const qty = item ? item.qty : 0;
+
+    if (qty === 0) {
+      productModalBtnContainer.innerHTML = '<button class="product-modal-cart-btn">Add to Cart</button>';
+      productModalBtnContainer.querySelector(".product-modal-cart-btn").addEventListener("click", function() {
+        addToCart({ sku: sku, name: name, price: parseFloat(price) });
+      });
+    } else {
+      productModalBtnContainer.innerHTML =
+        '<div class="qty-stepper product-modal-stepper">' +
+        '<button class="qty-btn qty-minus" aria-label="Remove one">−</button>' +
+        '<span class="qty-count">' + qty + '</span>' +
+        '<button class="qty-btn qty-plus" aria-label="Add one">+</button>' +
+        '</div>';
+      productModalBtnContainer.querySelector(".qty-minus").addEventListener("click", function() {
+        removeOne(sku);
+      });
+      productModalBtnContainer.querySelector(".qty-plus").addEventListener("click", function() {
+        addToCart({ sku: sku, name: name, price: parseFloat(price) });
+      });
+    }
+  }
+
+  function renderAllCardButtons() {
+    document.querySelectorAll(".product-card").forEach(function(card) {
+      renderCardButton(card);
     });
-  });
+    if (productModal && productModal.style.display === "flex" && productModalBtnContainer && productModalBtnContainer.dataset.sku) {
+      renderModalButton(
+        productModalBtnContainer.dataset.sku,
+        productModalBtnContainer.dataset.name,
+        productModalBtnContainer.dataset.price
+      );
+    }
+  }
 
   // Product card click → open detail modal
   document.querySelectorAll(".product-card").forEach((card) => {
@@ -241,17 +298,6 @@
       if (e.target === productModal) closeProductModal();
     });
   }
-  if (productModalAddToCart) {
-    productModalAddToCart.addEventListener("click", () => {
-      addToCart({
-        sku: productModalAddToCart.dataset.sku,
-        name: productModalAddToCart.dataset.name,
-        price: Number(productModalAddToCart.dataset.price),
-      });
-      animateAdded(productModalAddToCart);
-    });
-  }
-
   // Open/close cart
   cartIcon.addEventListener("click", openCart);
   if (viewCartBtn) viewCartBtn.addEventListener("click", openCart);
@@ -300,4 +346,5 @@ backToTopBtn.addEventListener("click", () => {
   const initialCart = loadCart();
   updateBadge(initialCart);
   renderCart();
+  renderAllCardButtons();
 })();
