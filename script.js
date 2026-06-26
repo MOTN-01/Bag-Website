@@ -15,6 +15,18 @@
   const cartTotalEl = document.getElementById("cartTotal");
   const checkoutBtn = document.getElementById("checkoutBtn");
 
+  const productModal = document.getElementById("productModal");
+  const closeProductBtn = document.getElementById("closeProductBtn");
+  const productModalImage = document.getElementById("productModalImage");
+  const productModalSku = document.getElementById("productModalSku");
+  const productModalName = document.getElementById("productModalName");
+  const productModalPrice = document.getElementById("productModalPrice");
+  const productModalDesc = document.getElementById("productModalDesc");
+  const productModalMaterial = document.getElementById("productModalMaterial");
+  const productModalDimensions = document.getElementById("productModalDimensions");
+  const productModalCapacity = document.getElementById("productModalCapacity");
+  const productModalAddToCart = document.getElementById("productModalAddToCart");
+
   function loadCart() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -64,9 +76,37 @@
     cartIcon.focus();
   }
 
+  function openProductModal(card) {
+    const img = card.querySelector(".product-image");
+    productModalImage.src = img.src;
+    productModalImage.alt = img.alt;
+    productModalSku.textContent = card.dataset.sku;
+    productModalName.textContent = card.dataset.name;
+    productModalPrice.textContent = "$" + parseFloat(card.dataset.price).toFixed(2);
+    productModalDesc.textContent = card.dataset.detail;
+    productModalMaterial.textContent = card.dataset.material;
+    productModalDimensions.textContent = card.dataset.dimensions;
+    productModalCapacity.textContent = card.dataset.capacity;
+    productModalAddToCart.dataset.sku = card.dataset.sku;
+    productModalAddToCart.dataset.name = card.dataset.name;
+    productModalAddToCart.dataset.price = card.dataset.price;
+    productModal.style.display = "flex";
+    productModal.setAttribute("aria-hidden", "false");
+    const first = productModal.querySelector(FOCUSABLE);
+    if (first) first.focus();
+  }
+
+  function closeProductModal() {
+    productModal.style.display = "none";
+    productModal.setAttribute("aria-hidden", "true");
+  }
+
   function trapFocus(e) {
-    if (cartModal.style.display !== "flex") return;
-    const focusable = Array.from(cartModal.querySelectorAll(FOCUSABLE));
+    const openModal = cartModal.style.display === "flex" ? cartModal
+                    : productModal && productModal.style.display === "flex" ? productModal
+                    : null;
+    if (!openModal) return;
+    const focusable = Array.from(openModal.querySelectorAll(FOCUSABLE));
     if (!focusable.length) return;
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
@@ -175,6 +215,7 @@
   // Wire product buttons
   document.querySelectorAll(".add-to-cart").forEach((btn) => {
     btn.addEventListener("click", (e) => {
+      e.stopPropagation();
       const button = e.currentTarget;
       const card = button.closest(".product-card");
       if (!card) return;
@@ -188,9 +229,32 @@
     });
   });
 
+  // Product card click → open detail modal
+  document.querySelectorAll(".product-card").forEach((card) => {
+    card.addEventListener("click", () => openProductModal(card));
+  });
+
+  // Product modal close
+  if (closeProductBtn) closeProductBtn.addEventListener("click", closeProductModal);
+  if (productModal) {
+    productModal.addEventListener("click", (e) => {
+      if (e.target === productModal) closeProductModal();
+    });
+  }
+  if (productModalAddToCart) {
+    productModalAddToCart.addEventListener("click", () => {
+      addToCart({
+        sku: productModalAddToCart.dataset.sku,
+        name: productModalAddToCart.dataset.name,
+        price: Number(productModalAddToCart.dataset.price),
+      });
+      animateAdded(productModalAddToCart);
+    });
+  }
+
   // Open/close cart
   cartIcon.addEventListener("click", openCart);
-  viewCartBtn.addEventListener("click", openCart);
+  if (viewCartBtn) viewCartBtn.addEventListener("click", openCart);
   closeCartBtn.addEventListener("click", closeCart);
 
   // click outside modal closes
@@ -202,6 +266,7 @@
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       if (cartModal.style.display === "flex") closeCart();
+      if (productModal && productModal.style.display === "flex") closeProductModal();
       if (mobileNav.classList.contains("open")) closeMobileNav();
     }
     trapFocus(e);

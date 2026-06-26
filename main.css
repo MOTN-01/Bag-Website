@@ -571,6 +571,237 @@ h2{
     letter-spacing:.03em;
 }
 
+/* PRODUCT DETAIL MODAL ******************************/
+.product-modal-overlay{
+    align-items:center;
+    padding-top:0;
+}
+.product-modal{
+    width:min(900px,94%);
+    max-height:88vh;
+    background:white;
+    border-radius:.6rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    overflow:hidden;
+    position:relative;
+}
+.product-modal-close{
+    position:absolute;
+    top:.75rem;
+    right:.75rem;
+    width:2rem;
+    height:2rem;
+    border:none;
+    background:rgba(255,255,255,.85);
+    border-radius:50%;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1;
+    transition:background .15s ease, box-shadow .15s ease;
+    backdrop-filter:blur(4px);
+}
+.product-modal-close:hover{
+    background:white;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+.product-modal-image-wrap{
+    overflow:hidden;
+    min-height:420px;
+}
+.product-modal-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+.product-modal-details{
+    padding:2.5rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    overflow-y:auto;
+}
+.product-modal-sku{
+    margin:0 0 .4rem;
+    font-size:.7rem;
+    font-weight:600;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#999;
+}
+.product-modal-name{
+    margin:0 0 .4rem;
+    font-size:1.8rem;
+    font-weight:700;
+    letter-spacing:-.02em;
+    color:#1a1a1a;
+    text-align:left;
+}
+.product-modal-price{
+    margin:0 0 1.25rem;
+    font-size:1.1rem;
+    font-weight:700;
+    color:#b8965a;
+}
+.product-modal-desc{
+    margin:0 0 1.75rem;
+    font-size:.9rem;
+    color:#555;
+    line-height:1.8;
+}
+.product-modal-specs{
+    border-top:1px solid #eee;
+    border-bottom:1px solid #eee;
+    padding:.25rem 0;
+    margin-bottom:1.75rem;
+}
+.spec-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:.55rem 0;
+    font-size:.85rem;
+    color:#555;
+}
+.spec-row + .spec-row{border-top:1px solid #f5f5f5}
+.spec-label{
+    font-size:.7rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:#1a1a1a;
+}
+.product-modal-cart-btn{
+    width:100%;
+    padding:.9rem;
+    background:#1a1a1a;
+    color:white;
+    border:none;
+    border-radius:.4rem;
+    font-weight:600;
+    font-size:.8rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:background .15s ease, transform .15s ease;
+}
+.product-modal-cart-btn:hover{
+    background:#333;
+    transform:translateY(-1px);
+}
+.product-card{cursor:pointer}
+
+/* CONTACT PAGE ******************************/
+.page-header{
+    padding:6rem 0 4rem;
+    text-align:center;
+    border-bottom:1px solid #e8e8e8;
+}
+.page-header h1{
+    font-size:3rem;
+    font-weight:700;
+    letter-spacing:-.02em;
+    margin:0 0 .75rem;
+    color:#1a1a1a;
+}
+.page-header p{
+    margin:0;
+    color:#999;
+    font-size:.95rem;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+}
+.contact-section{
+    width:70%;
+    margin:5rem auto 7rem;
+    display:grid;
+    grid-template-columns:1fr 1.8fr;
+    gap:5rem;
+}
+.contact-info-block{
+    margin-bottom:2.5rem;
+}
+.contact-info-title{
+    margin:0 0 .5rem;
+    font-size:.7rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:#1a1a1a;
+}
+.contact-info-block p{
+    margin:.2rem 0;
+    font-size:.9rem;
+    color:#666;
+    line-height:1.7;
+}
+.contact-form .form-group{
+    margin-bottom:1.5rem;
+}
+.contact-form label{
+    display:block;
+    margin-bottom:.4rem;
+    font-size:.7rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:#1a1a1a;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+    width:100%;
+    padding:.75rem 1rem;
+    border:1px solid #ddd;
+    border-radius:.4rem;
+    font-size:.9rem;
+    font-family:inherit;
+    color:#1a1a1a;
+    background:white;
+    box-sizing:border-box;
+    transition:border-color .15s ease;
+    appearance:none;
+    -webkit-appearance:none;
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus{
+    outline:none;
+    border-color:#b8965a;
+}
+.contact-form select{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 1rem center;
+    padding-right:2.5rem;
+    cursor:pointer;
+}
+.contact-form textarea{
+    height:150px;
+    resize:vertical;
+}
+.contact-submit{
+    width:100%;
+    padding:.85rem;
+    background:#1a1a1a;
+    color:white;
+    border:none;
+    border-radius:.4rem;
+    font-weight:600;
+    font-size:.8rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition:background .15s ease, transform .15s ease;
+}
+.contact-submit:hover{
+    background:#333;
+    transform:translateY(-1px);
+}
+
 /* ANCHOR OFFSET for sticky nav ******************************/
 #hero, #about, #products, #footer{
     scroll-margin-top:6rem;
@@ -595,4 +826,20 @@ h2{
     .top-bar{font-size:2.5vw}
     .products-grid{grid-template-columns:1fr}
     .footer-columns{grid-template-columns:1fr}
+    .contact-section{
+        width:85%;
+        grid-template-columns:1fr;
+        gap:3rem;
+        margin:3rem auto 5rem;
+    }
+    .product-modal{
+        grid-template-columns:1fr;
+        max-height:95vh;
+        overflow-y:auto;
+    }
+    .product-modal-image-wrap{
+        min-height:260px;
+        max-height:40vh;
+    }
+    .product-modal-details{padding:1.5rem}
 }

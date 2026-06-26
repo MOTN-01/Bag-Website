@@ -36,7 +36,7 @@
             <ul>
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#footer">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
                 <li><a href="#products">Products</a></li>
             </ul>
         </div>
@@ -62,7 +62,7 @@
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
         <a href="#hero">Home</a>
         <a href="#about">About</a>
-        <a href="#footer">Contact</a>
+        <a href="contact.html">Contact</a>
         <a href="#products">Products</a>
     </nav>
 
@@ -142,7 +142,11 @@
     <div class="products-section">
         <div class="products-grid" id="productGrid">
 
-            <div class="product-card" data-sku="SB-101" data-name="Metro Sling" data-price="39.99">
+            <div class="product-card" data-sku="SB-101" data-name="Metro Sling" data-price="39.99"
+                data-detail="The Metro Sling is built for the urban commuter who moves fast and travels light. Its slim profile tucks neatly against the body while quick-access exterior pockets keep your essentials within arm's reach."
+                data-material="1000D Nylon, Antique Brass Hardware"
+                data-dimensions="11&quot; H × 7&quot; W × 3&quot; D"
+                data-capacity="6L">
                 <img class="product-image" src="Images/bagproduct1.jpg" alt="Metro Sling">
                 <div class="product-text">
                     <h2>Metro Sling</h2>
@@ -154,7 +158,11 @@
                 </div>
             </div>
 
-            <div class="product-card" data-sku="SB-102" data-name="Commuter Sling" data-price="54.99">
+            <div class="product-card" data-sku="SB-102" data-name="Commuter Sling" data-price="54.99"
+                data-detail="Designed around the demands of daily city use. Multiple interior compartments keep cables, notebooks, and accessories neatly sorted without the bulk of a traditional backpack."
+                data-material="Ripstop Nylon, YKK Zippers"
+                data-dimensions="13&quot; H × 8&quot; W × 3.5&quot; D"
+                data-capacity="9L">
                 <img class="product-image" src="Images/bagproduct2.jpg" alt="Commuter Sling">
                 <div class="product-text">
                     <h2>Commuter Sling</h2>
@@ -166,7 +174,11 @@
                 </div>
             </div>
 
-            <div class="product-card" data-sku="SB-103" data-name="Trail Sling" data-price="59.99">
+            <div class="product-card" data-sku="SB-103" data-name="Trail Sling" data-price="59.99"
+                data-detail="Built to handle the transition between city streets and weekend trails. Reinforced stitching and weather-resistant fabric keep your gear protected wherever the day takes you."
+                data-material="600D Polyester, Padded Shoulder Strap"
+                data-dimensions="14&quot; H × 8&quot; W × 4&quot; D"
+                data-capacity="12L">
                 <img class="product-image" src="Images/bagproduct3.jpg" alt="Trail Sling">
                 <div class="product-text">
                     <h2>Trail Sling</h2>
@@ -178,7 +190,11 @@
                 </div>
             </div>
 
-            <div class="product-card" data-sku="SB-104" data-name="Tech Sling" data-price="64.99">
+            <div class="product-card" data-sku="SB-104" data-name="Tech Sling" data-price="64.99"
+                data-detail="Engineered for the tech-forward professional. The internal organization system accommodates tablets up to 10&quot;, with dedicated sleeves for cables, hard drives, and small accessories."
+                data-material="Ballistic Nylon, Molded EVA Base"
+                data-dimensions="12&quot; H × 8&quot; W × 4&quot; D"
+                data-capacity="10L">
                 <img class="product-image" src="Images/bagproduct4.jpg" alt="Tech Sling">
                 <div class="product-text">
                     <h2>Tech Sling</h2>
@@ -190,7 +206,11 @@
                 </div>
             </div>
 
-            <div class="product-card" data-sku="SB-105" data-name="Travel Sling" data-price="69.99">
+            <div class="product-card" data-sku="SB-105" data-name="Travel Sling" data-price="69.99"
+                data-detail="Purpose-built for transit. Hidden RFID-blocking pockets protect cards and passports, while the slim silhouette clears airline seat pockets and security checkpoints without friction."
+                data-material="Waterproof Nylon, RFID-Blocking Lining"
+                data-dimensions="13&quot; H × 9&quot; W × 3.5&quot; D"
+                data-capacity="11L">
                 <img class="product-image" src="Images/bagproduct5.jpg" alt="Travel Sling">
                 <div class="product-text">
                     <h2>Travel Sling</h2>
@@ -202,7 +222,11 @@
                 </div>
             </div>
 
-            <div class="product-card" data-sku="SB-106" data-name="All-Day Sling" data-price="74.99">
+            <div class="product-card" data-sku="SB-106" data-name="All-Day Sling" data-price="74.99"
+                data-detail="The premium carry for extended days. Full-grain leather accents age beautifully with wear, while the reinforced canvas shell handles the weight of a full day's load without compromise."
+                data-material="Heavy Canvas, Full-Grain Leather Trim"
+                data-dimensions="15&quot; H × 10&quot; W × 5&quot; D"
+                data-capacity="16L">
                 <img class="product-image" src="Images/bagproduct6.jpg" alt="All-Day Sling">
                 <div class="product-text">
                     <h2>All-Day Sling</h2>
@@ -231,6 +255,40 @@
             <div class="modal-footer">
                 <p><strong>Total:</strong> <span id="cartTotal">$0.00</span></p>
                 <button id="checkoutBtn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="productModal" class="modal-overlay product-modal-overlay" aria-hidden="true">
+        <div class="product-modal" role="dialog" aria-modal="true" aria-label="Product details">
+            <button id="closeProductBtn" class="product-modal-close" aria-label="Close product details">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="product-modal-image-wrap">
+                <img id="productModalImage" class="product-modal-image" src="" alt="">
+            </div>
+            <div class="product-modal-details">
+                <p class="product-modal-sku" id="productModalSku"></p>
+                <h2 class="product-modal-name" id="productModalName"></h2>
+                <p class="product-modal-price" id="productModalPrice"></p>
+                <p class="product-modal-desc" id="productModalDesc"></p>
+                <div class="product-modal-specs">
+                    <div class="spec-row">
+                        <span class="spec-label">Material</span>
+                        <span id="productModalMaterial"></span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Dimensions</span>
+                        <span id="productModalDimensions"></span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Capacity</span>
+                        <span id="productModalCapacity"></span>
+                    </div>
+                </div>
+                <button id="productModalAddToCart" class="product-modal-cart-btn">Add to Cart</button>
             </div>
         </div>
     </div>
