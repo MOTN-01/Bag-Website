@@ -1,8 +1,6 @@
 # SlingBags
 
-A fully hand-coded e-commerce storefront for a high-end men's accessories brand, built with vanilla HTML, CSS, and JavaScript — no frameworks, no libraries, no build tools.
-
-The site is designed to reflect the aesthetic of premium menswear retail: editorial typography with Playfair Display, a restrained color palette of near-black and cognac, parallax hero sections, and smooth micro-interactions throughout.
+A fully hand-coded e-commerce storefront for a high-end men's accessories brand, built with vanilla HTML, CSS, and JavaScripts. The site is designed to reflect the aesthetic of premium menswear retail.
 
 ## Features
 
@@ -29,7 +27,7 @@ This project demonstrates strong fundamentals in front-end development without r
 
 - HTML5
 - CSS3
-- Vanilla JavaScript (ES6+, IIFE module pattern)
+- Vanilla JavaScript
 - Google Fonts (Playfair Display)
 
 ---
