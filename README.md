@@ -1,6 +1,8 @@
 # SlingBags
 
-A fully hand-coded e-commerce storefront for a high-end men's accessories brand, built with vanilla HTML, CSS, and JavaScripts. The site is designed to reflect the aesthetic of premium menswear retail.
+An e-commerce storefront for a high-end men's accessories brand, built with vanilla HTML, CSS, and JavaScripts. The site is designed to reflect the aesthetic of premium menswear retail.
+
+<img width="850" height="604" alt="website-demo" src="https://github.com/user-attachments/assets/d8362d1b-c181-4fe9-9f3c-684d0133ee6a" />
 
 ## Features
 
@@ -11,7 +13,7 @@ A fully hand-coded e-commerce storefront for a high-end men's accessories brand,
 - **Contact page** — separate routed page with a structured inquiry form and business contact details, sharing the same nav, cart, and footer
 - **Responsive layout** — adapts from a 2-column desktop grid to a single-column mobile layout with a hamburger nav drawer
 - **Parallax hero** — full-bleed background with a gradient overlay and centered editorial CTA
-- **SVG logo & favicon** — entirely hand-authored SVG assets, no raster images for brand marks
+- **SVG logo & favicon** — SVG assets, no raster images for brand marks
 
 ## Technical Highlights
 
@@ -32,6 +34,3 @@ This project demonstrates strong fundamentals in front-end development without r
 
 ---
 
-<img width="1199" height="968" alt="Screenshot From 2026-06-08 23-25-44" src="https://github.com/user-attachments/assets/29fbb91a-1b35-4e3f-96b7-2447f32d5562" />
-<img width="1199" height="968" alt="Screenshot From 2026-06-08 23-26-05" src="https://github.com/user-attachments/assets/6317508b-ba31-4fd2-a71b-5301fc2e81b7" />
-<img width="1199" height="968" alt="Screenshot From 2026-06-08 23-26-36" src="https://github.com/user-attachments/assets/04fc483a-12c9-4ecc-9a06-70bf384f9a24" />
