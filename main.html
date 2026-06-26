@@ -12,7 +12,25 @@
 <body>
     <div class="top-bar">
         <div class="logo">
-            <a href="#">SlingBags</a>
+            <a href="#hero" aria-label="SlingBags — home">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 56" width="200" height="56" role="img" aria-hidden="true">
+                    <text x="100" y="19"
+                        text-anchor="middle"
+                        font-family="'Playfair Display', Georgia, serif"
+                        font-size="11"
+                        font-weight="400"
+                        fill="#1a1a1a"
+                        letter-spacing="7">SLING</text>
+                    <line x1="22" y1="26" x2="178" y2="26" stroke="#b8965a" stroke-width="0.7"/>
+                    <text x="100" y="49"
+                        text-anchor="middle"
+                        font-family="'Playfair Display', Georgia, serif"
+                        font-size="23"
+                        font-weight="700"
+                        fill="#1a1a1a"
+                        letter-spacing="3">BAGS</text>
+                </svg>
+            </a>
         </div>
         <div class="links" id="navLinks">
             <ul>
@@ -217,11 +235,50 @@
         </div>
     </div>
 
-    <div class="footer" id="footer">
-        <div class="animation-container">
-            <p class="footer-text">© <span id="copyrightYear"></span> SlingBags. All rights reserved.</p>
+    <footer class="footer" id="footer">
+        <div class="footer-inner">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <p class="footer-col-title">Shop</p>
+                    <ul>
+                        <li><a href="#">All Products</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <p class="footer-col-title">Company</p>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <p class="footer-col-title">Support</p>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <p class="footer-col-title">Legal</p>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-text">© <span id="copyrightYear"></span> SlingBags. All rights reserved.</p>
+            </div>
         </div>
-    </div>
+    </footer>
 
     <button id="backToTopBtn" class="back-to-top" aria-label="Back to top">
     Back To Top

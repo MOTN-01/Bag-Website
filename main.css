@@ -1,4 +1,5 @@
 /* BASE ******************************/
+html{scroll-behavior:smooth}
 body{
     margin:0;
     padding:0;
@@ -30,9 +31,10 @@ h1, h2, .banner-head{
 }
 .logo{
     padding-left:1em;
-    font-weight:bold;
-    font-size:1.1rem;
-    letter-spacing:-.02em;
+}
+.logo a{
+    display:flex;
+    align-items:center;
 }
 .logo a::before{display:none}
 .links{
@@ -44,6 +46,9 @@ ul{position:relative}
 li{
     display:inline;
     padding:0 1rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-size:1rem;
 }
 a{
     text-decoration:none;
@@ -128,8 +133,10 @@ a:hover::before{width:100%}
 .mobile-nav.open{display:flex}
 .mobile-nav a{
     padding:1rem 1.5rem;
-    font-size:1.1rem;
+    font-size:.95rem;
     border-bottom:1px solid #f0f0f0;
+    text-transform:uppercase;
+    letter-spacing:.08em;
 }
 .mobile-nav a:hover::before{width:0}
 
@@ -513,29 +520,56 @@ h2{
 
 /* FOOTER ******************************/
 .footer{
-    height:10rem;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:.8rem;
     background:#f8f8f8;
-    color:#666;
-    letter-spacing:.02em;
+    border-top:1px solid #e8e8e8;
+    padding:4rem 0 2rem;
+}
+.footer-inner{
+    width:70%;
+    margin:0 auto;
+}
+.footer-columns{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:2rem;
+    margin-bottom:3rem;
+}
+.footer-col-title{
+    margin:0 0 1rem;
+    font-size:.7rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:#1a1a1a;
+}
+.footer-col ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+.footer-col li{
+    display:block;
+    padding:.35rem 0;
+    text-transform:none;
+    letter-spacing:normal;
+    font-size:.85rem;
+}
+.footer-col a{
+    color:#888;
+    transition:color .15s ease;
+}
+.footer-col a:hover{color:#1a1a1a}
+.footer-col a::before{display:none}
+.footer-bottom{
+    border-top:1px solid #e8e8e8;
+    padding-top:1.5rem;
 }
 .footer-text{
-    position:relative;
+    margin:0;
+    font-size:.75rem;
+    color:#aaa;
+    letter-spacing:.03em;
 }
-.footer-text::before{
-    content:"";
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:0;
-    height:2px;
-    background:#000;
-    transition:width .25s ease;
-}
-.footer-text:hover::before{width:100%}
 
 /* ANCHOR OFFSET for sticky nav ******************************/
 #hero, #about, #products, #footer{
@@ -548,6 +582,8 @@ h2{
     .menu{display:block}
     .more-info-section,
     .products-grid{width:85%}
+    .footer-inner{width:85%}
+    .footer-columns{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:650px){
     .more-info-section{
@@ -558,4 +594,5 @@ h2{
     .info-info2{text-align:left}
     .top-bar{font-size:2.5vw}
     .products-grid{grid-template-columns:1fr}
+    .footer-columns{grid-template-columns:1fr}
 }
